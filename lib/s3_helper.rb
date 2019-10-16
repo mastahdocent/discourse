@@ -28,12 +28,16 @@ class S3Helper
   end
 
   def self.get_bucket_and_folder_path(s3_bucket_name)
-    s3_bucket_name.downcase.split("/".freeze, 2)
+    pp = s3_bucket_name.downcase.split("/".freeze, 2)
+    puts "bucket and folder path: #{pp}"
+    pp
   end
 
   def upload(file, path, options = {})
     path = get_path_for_s3_upload(path)
     obj = s3_bucket.object(path)
+
+    puts "upload path: #{path}"
 
     etag = begin
       if File.size(file.path) >= Aws::S3::FileUploader::FIFTEEN_MEGABYTES
