@@ -52,8 +52,6 @@ module FileStore
       path.prepend(File.join(upload_path, "/")) if Rails.configuration.multisite
 
       # if this fails, it will throw an exception
-      puts "store_file: #{path}"
-      Rails.logger.warn "store_file: #{path}"
       path, etag = @s3_helper.upload(file, path, options)
 
       # return the upload url and etag
