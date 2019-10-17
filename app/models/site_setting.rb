@@ -164,7 +164,8 @@ class SiteSetting < ActiveRecord::Base
           "//#{bucket}.s3.dualstack.#{SiteSetting.Upload.s3_region}.amazonaws.com"
         end
       else
-        "//#{bucket}.#{url_basename}"
+        "//#{url_basename}/#{bucket}" # force_path_style = true
+        #"//#{bucket}.#{url_basename}"
       end
     end
   end

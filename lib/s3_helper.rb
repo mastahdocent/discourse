@@ -200,7 +200,8 @@ class S3Helper
 
   def self.s3_options(obj)
     opts = {
-      region: obj.s3_region
+      region: obj.s3_region,
+      force_path_style: true
     }
 
     opts[:endpoint] = SiteSetting.s3_endpoint if SiteSetting.s3_endpoint.present?
